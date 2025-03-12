@@ -1,36 +1,42 @@
 // Saves options to localStorage.
 function save_options() {
-  var options = {'trigger_hover' : document.getElementById("HTTTriggerHover").checked,
-                  'HTTtooltipDelay' : document.getElementById("HTTTriggerHoverDelay").value,
+  var options = {
+    'trigger_hover': document.getElementById("HTTTriggerHover").checked,
+    'HTTtooltipDelay': document.getElementById("HTTTriggerHoverDelay").value,
 
-                  'trigger_click' : document.getElementById("HTTTriggerClick").checked,
-                  'trigger_click_ctrl' : document.getElementById("HTTTriggerClickCtrl").checked,
-                  'trigger_click_alt' : document.getElementById("HTTTriggerClickAlt").checked,
-                  'trigger_click_shift' : document.getElementById("HTTTriggerClickShift").checked,
+    'trigger_click': document.getElementById("HTTTriggerClick").checked,
+    'trigger_click_ctrl': document.getElementById("HTTTriggerClickCtrl").checked,
+    'trigger_click_alt': document.getElementById("HTTTriggerClickAlt").checked,
+    'trigger_click_shift': document.getElementById("HTTTriggerClickShift").checked,
 
-                  'trigger_highlight' : document.getElementById("HTTTriggerHighlight").checked,
-                  'trigger_highlight_ctrl' : document.getElementById("HTTTriggerHighlightCtrl").checked,
-                  'trigger_highlight_alt' : document.getElementById("HTTTriggerHighlightAlt").checked,
-                  'trigger_highlight_shift' : document.getElementById("HTTTriggerHighlightShift").checked,
+    'trigger_highlight': document.getElementById("HTTTriggerHighlight").checked,
+    'trigger_highlight_ctrl': document.getElementById("HTTTriggerHighlightCtrl").checked,
+    'trigger_highlight_alt': document.getElementById("HTTTriggerHighlightAlt").checked,
+    'trigger_highlight_shift': document.getElementById("HTTTriggerHighlightShift").checked,
 
-                  'trigger_keyboard' : document.getElementById("HTTTriggerKeyboard").checked,
-                  'trigger_keyboard_ctrl' : document.getElementById("HTTTriggerKeyboardCtrl").checked,
-                  'trigger_keyboard_alt' : document.getElementById("HTTTriggerKeyboardAlt").checked,
-                  'trigger_keyboard_shift' : document.getElementById("HTTTriggerKeyboardShift").checked,
-                  'HTTtooltipCharacter' : document.getElementById("HTTTriggerKeyboardCharacter").value,
+    'trigger_keyboard': document.getElementById("HTTTriggerKeyboard").checked,
+    'trigger_keyboard_ctrl': document.getElementById("HTTTriggerKeyboardCtrl").checked,
+    'trigger_keyboard_alt': document.getElementById("HTTTriggerKeyboardAlt").checked,
+    'trigger_keyboard_shift': document.getElementById("HTTTriggerKeyboardShift").checked,
+    'HTTtooltipCharacter': document.getElementById("HTTTriggerKeyboardCharacter").value,
 
-                  'hide_move' : document.getElementById("HTTHideMove").checked,
-                  'hide_click' : document.getElementById("HTTHideClick").checked,
-                  'hide_scroll' : document.getElementById("HTTHideScroll").checked,
-                  'hide_keyboard' : document.getElementById("HTTHideKeyboard").checked,
+    'hide_move': document.getElementById("HTTHideMove").checked,
+    'hide_click': document.getElementById("HTTHideClick").checked,
+    'hide_scroll': document.getElementById("HTTHideScroll").checked,
+    'hide_keyboard': document.getElementById("HTTHideKeyboard").checked,
 
-                  'align_top' : document.getElementById("HTTLocationY1").checked,
-                  'align_left' : document.getElementById("HTTLocationX1").checked,
-                  'keep_on_screen' : document.getElementById("HTTKeepOnScreen").checked,
-                  
-                  'activity_indicator' : document.getElementById("HTTActivityIndicator").checked};
-  localStorage["options"] = JSON.stringify(options);
+    'align_top': document.getElementById("HTTLocationY1").checked,
+    'align_left': document.getElementById("HTTLocationX1").checked,
+    'keep_on_screen': document.getElementById("HTTKeepOnScreen").checked,
+    
+    'activity_indicator': document.getElementById("HTTActivityIndicator").checked
+  };
+
+  chrome.storage.local.set({ options: options }, function() {
+    console.log("Options have been saved.");
+  });
 }
+
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {

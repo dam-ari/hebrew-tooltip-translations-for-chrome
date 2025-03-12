@@ -1,26 +1,36 @@
 ﻿{
-  "name": "Hebrew Tooltip Translation for Google Chrome™",
-  "version": "2.8",
-  "manifest_version": 2,
-  "description": "Translate Hebrew to English and vice-versa via tooltip",
+  "manifest_version": 3,
+  "name": "Your Extension Name",
+  "version": "1.0.0",
+  "description": "A brief description of the extension.",
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "My Extension"
+  },
   "permissions": [
-    "http://www.morfix.co.il/*"
+    "storage",
+    "tabs",
+    "scripting"
   ],
-  "icons": {
-    "16": "HTT-16.png",
-    "48": "HTT-48.png",
-    "128": "HTT-128.png"
-  },
-  "background" : {
-    "scripts": ["HTT-background.js"],
-    "persistent": true
-  },
-  "options_page": "HTT-options.html",
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "css": ["htt.css"],
-      "js" : ["HTT-contentscript.js"]
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
     }
-  ]
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
 }

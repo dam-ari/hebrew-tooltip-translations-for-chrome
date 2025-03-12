@@ -150,7 +150,7 @@
       }
       var HTTreq;
 
-      chrome.extension.sendRequest({'action' : 'xhr', 'url' : 'http://www.morfix.co.il/' + encodeURIComponent(input)}, HTTparseResponse);
+      chrome.extension.sendMessage({'action' : 'xhr', 'url' : 'http://www.morfix.co.il/' + encodeURIComponent(input)}, HTTparseResponse);
     }
   }
 
@@ -383,7 +383,7 @@
   }
 
   function HTTinit () {
-    chrome.extension.sendRequest({'action' : 'localStorage_get', 'attribute' : 'options'}, HTToptions_callback);
+    chrome.extension.sendMessage({'action' : 'localStorage_get', 'attribute' : 'options'}, HTToptions_callback);
     //don't continue until the callback completes
   }
 
